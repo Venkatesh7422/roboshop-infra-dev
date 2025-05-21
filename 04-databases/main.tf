@@ -2,7 +2,7 @@ module "mongodb" {
   source                 = "terraform-aws-modules/ec2-instance/aws"
   ami = data.aws_ami.rhel9.id
   name                   = "${local.ec2_name}-mongodb"
-  instance_type          = "t3.small"
+  instance_type          = "t3.micro"
   vpc_security_group_ids = [data.aws_ssm_parameter.mongodb_sg_id.value]
   subnet_id              = local.database_subnet_id
   tags = merge(
@@ -96,7 +96,7 @@ module "mysql" {
   source                 = "terraform-aws-modules/ec2-instance/aws"
   ami = data.aws_ami.rhel9.id
   name                   = "${local.ec2_name}-mysql"
-  instance_type          = "t3.small"
+  instance_type          = "t3.micro"
   vpc_security_group_ids = [data.aws_ssm_parameter.mysql_sg_id.value]
   subnet_id              = local.database_subnet_id
   iam_instance_profile = "ShellScriptRoleForRoboshop"
@@ -144,7 +144,7 @@ module "rabbitmq" {
   source                 = "terraform-aws-modules/ec2-instance/aws"
   ami = data.aws_ami.rhel9.id
   name                   = "${local.ec2_name}-rabbitmq"
-  instance_type          = "t3.small"
+  instance_type          = "t3.micro"
   vpc_security_group_ids = [data.aws_ssm_parameter.rabbitmq_sg_id.value]
   subnet_id              = local.database_subnet_id
   iam_instance_profile = "ShellScriptRoleForRoboshop"
