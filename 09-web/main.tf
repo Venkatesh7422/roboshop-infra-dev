@@ -9,8 +9,8 @@ resource "aws_lb_target_group" "web" {
       interval            = 10
       unhealthy_threshold = 3
       timeout             = 5
-      #path                = "/health"
-      path                = "/"
+      path                = "/health"
+      # path                = "/"
       port                = 80
       matcher = "200-299"
   }
